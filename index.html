@@ -2,28 +2,21 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Video</title>
+    <title>Video con interacción</title>
     <style>
         body {
             margin: 0;
             background: black;
             height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         video {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* IMPORTANTE */
-        }
-
-        button {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
+            object-fit: contain; /* Evita que se corte el video */
         }
     </style>
 </head>
@@ -31,15 +24,20 @@
 
 <video id="video" autoplay muted playsinline>
     <source src="video.mp4" type="video/mp4">
+    Tu navegador no soporta video HTML5.
 </video>
 
-<button onclick="activarSonido()">Activar sonido</button>
-
 <script>
+    const video = document.getElementById("video");
+
+    // Detecta cualquier clic o toque en la pantalla
+    document.addEventListener("click", activarSonido, { once: true });
+    document.addEventListener("touchstart", activarSonido, { once: true });
+
     function activarSonido() {
-        const video = document.getElementById("video");
-        video.muted = false;
-        video.volume = 1.0;
+        video.muted = false;   // Desmutea
+        video.volume = 1.0;    // Ajusta volumen al máximo
+        video.play();          // Asegura que siga reproduciéndose
     }
 </script>
 
