@@ -22,13 +22,13 @@
 </head>
 <body>
 
-<video id="Video" autoplay muted playsinline>
-    <source src="Video.flv" type="video/flv">
+<video id="video" autoplay muted playsinline>
+    <source src="video.mp4" type="video/mp4">
     Tu navegador no soporta video HTML5.
 </video>
 
 <script>
-    const video = document.getElementById("Video");
+    const video = document.getElementById("video");
 
     // Detecta cualquier clic o toque en la pantalla
     document.addEventListener("click", activarSonido, { once: true });
