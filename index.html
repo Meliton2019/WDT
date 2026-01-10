@@ -2,30 +2,46 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Video Autoplay</title>
+    <title>Video</title>
     <style>
         body {
             margin: 0;
             background: black;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             height: 100vh;
         }
 
         video {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain; /* IMPORTANTE */
+        }
+
+        button {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
-<video autoplay muted loop playsinline>
+<video id="video" autoplay muted playsinline>
     <source src="video.mp4" type="video/mp4">
-    Tu navegador no soporta video HTML5.
 </video>
+
+<button onclick="activarSonido()">Activar sonido</button>
+
+<script>
+    function activarSonido() {
+        const video = document.getElementById("video");
+        video.muted = false;
+        video.volume = 1.0;
+    }
+</script>
 
 </body>
 </html>
